@@ -1,0 +1,118 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-image: conic-gradient(red, orange,yellow,green, rgb(81, 217, 81),yellow,orange,red);
+    /* background-color: blue; */
+    height: 100vh;
+}
+header h1{
+    background-image: linear-gradient(to right,blue, aqua, lightblue);
+    color: black;
+    text-align: center;
+    font-family: 'Courier New';
+    padding: 20px 0px;
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.score-board{
+    margin: 50px auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 500px;
+    height: 150px;
+    padding: 40px 10px;
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    
+}
+
+.badge{
+    background-color: rgb(141, 50, 65);
+    font-size: 50px;
+    padding: 10px;
+    color: white;
+    font-family: 'Times New Roman';
+}
+
+#user-badge{
+    position: absolute;
+    top: 30px;
+    left: -60px;
+}
+
+#comp-badge{
+    position: absolute;
+    top: 30px;
+    right: -70px;
+}
+
+.result{
+    text-align: center;
+    font-size: 50px;
+    color: black;
+    font-weight: 700;
+    font-family: 'Times New Roman';
+}
+
+.choices{
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.choice{
+    display: inline-block;
+    border: 5px solid gray;
+    border-radius: 25px;
+    /* padding: 0 20px; */
+    margin: 0 20px;
+    transition: all 0.5s ease;
+}
+
+.choice img{
+    padding: 3px 0 0 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 20px; 
+}
+
+.choice:hover{
+    cursor: pointer;
+    border: 5px solid black;
+    box-shadow: 5px 5px 5px 5px lightgray;
+}
+
+#action-msg{
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: 'Times New Roman';
+}
+
+.green-glow {
+    border: 5px solid violet !important;
+    box-shadow: 5px 5px 20px violet !important;
+}
+
+.red-glow {
+    border: 5px solid aqua !important;
+    box-shadow: 5px 5px 20px aqua !important;
+}
+
+.gray-glow {
+    border: 5px solid maroon !important;
+    box-shadow: 5px 5px 20px maroon !important;
+}
+
+.on-win{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+
