@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background-image: radial-gradient(orange,yellow,red);
+}
+
+.container{
+    text-align: cenetr;
+    font-family: 'Times New Roman';
+}
+
+.container h1{
+    font-size: 50px;
+}
+
+.container textarea{
+    height: 300px;
+    width: 400px;
+    font-size: 30px;
+    font-family: 'Times New Roman';
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+h3,p{
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Times New Roman';
+}
+
+
+.blink {
+  animation: blinkText 1s infinite;
+}
+/* @keyframes: “Instructions for what should happen during the animation.” */
+@keyframes blinkText {
+  50% {
+    opacity: 0;
+  }
+}
+
+
