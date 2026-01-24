@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:radial-gradient(
+        rgb(186, 238, 144) ,
+        rgb(155, 238, 144) ,
+        rgb(144, 238, 188) ,
+        rgb(144, 238, 207) 
+    );
+    width: 100%;
+    height: 100vh;
+    font-family:'Lucida Sans';
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(0, 255, 247);
+    box-shadow: 0px 0px 5px 5px #189feebe;
+    border-radius: 10px;
+    padding: 20px;
+    width: auto;
+    height: auto;
+}
+
+.head h1{
+    font-size: 50px;
+    margin-block: 10px;
+}
+
+.display{
+    font-size: 40px;
+    margin-block: 10px;
+    font-weight: 700;
+}
+
+.buttons button{
+    padding: 5px;
+    font-size: 30px;
+    font-weight: 650;
+    margin-block: 10px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.buttons #start-btn{
+    background: linear-gradient(to bottom right,green,rgb(45, 237, 45) );
+    color: white;
+}
+
+.buttons #stop-btn{
+    background: linear-gradient(to bottom right,red,rgb(244, 149, 149) );
+    color: white;
+}
+.buttons #reset-btn{
+    background: linear-gradient(to bottom right,rgb(139, 137, 137) ,lightgray);
+    color: white;
+}
+
+.buttons #flag-btn{
+    background: linear-gradient(to bottom right,rgb(212, 180, 0),yellow );
+    color: white;
+}
+
+
