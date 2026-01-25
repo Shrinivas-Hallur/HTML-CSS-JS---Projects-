@@ -45,6 +45,19 @@ body{
     width: 8ch;
 }
 
+.laps{
+    margin-block: 10px;
+    width: 100%;
+    text-align: center;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.laps div{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 3px;
+}
 .buttons button{
     padding: 5px;
     font-size: 30px;
