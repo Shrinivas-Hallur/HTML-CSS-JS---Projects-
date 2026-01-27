@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New';
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(45deg,rgb(86, 171, 255),aqua,rgb(140, 201, 201));
+    width: 100%;
+    height: 100vh;
+}
+
+
+.container{
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 149, 255, 0.5);
+    width: 475px;
+    height: auto;
+}
+
+.container h1{
+    font-size: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container input{
+    padding: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.container #save-btn{
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(to bottom right, green,lightgreen);
+    font-weight: 700;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.container ol li{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 38px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.container ol li button{
+    padding: 5px 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(to bottom right, green,lightgreen);
+    font-weight: 700;
+    font-size: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+@media (max-width:500px){
+    .container input{
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.container #save-btn{
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(to bottom right, green,lightgreen);
+    font-weight: 700;
+    font-size: 25px;
+}
+
+}
