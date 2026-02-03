@@ -53,7 +53,7 @@ body{
 .select-size{
     margin-block: 10px;
     display: flex;    
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .select-size label{
@@ -84,6 +84,11 @@ body{
     background: white;
 }
 
+    .qr-body img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
 .footer #generate-btn, .footer #download-btn{
     padding: 5px;
     font-size: 20px;
@@ -96,6 +101,11 @@ body{
     font-weight: 600;
 }
 
+.footer a{
+    text-decoration: none;
+    color: black;
+}
+
 @media (max-width: 600px){
     .container{
         width: 90%;
@@ -106,6 +116,7 @@ body{
         width: 200px;
         height: 200px;
     }
+
 
     .head{
         margin-block: 10px;
