@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validate Form</title>
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="head">
-            <h1>Sign up</h1>
+            <h1>Signup</h1>
         </div>
-        <div class="name">
-            <label for="name">FullName</label>
-            <input type="text" placeholder="Enetr FullName.." id="name">
-        </div>
-        <div class="email">
-            <label for="emailid">Email</label>
-            <input type="email" placeholder="ENter email...." id="emailid">
-        </div>
-        <div class="password">
-            <label for="pwd">Password</label>
-            <input type="password" placeholder="enterpassword" id="pwd">
-        </div>
+        <form action="#">
+            <div class="name">
+                <label for="name">FullName</label>
+                <input type="text" placeholder="Enetr FullName.." id="name">
+            </div>
+            <div class="email">
+                <label for="emailid">Email</label>
+                <input type="email" placeholder="ENter email...." id="emailid">
+            </div>
+            <div class="password">
+                <label for="pwd">Password</label>
+                <input type="password" placeholder="Enter password" id="pwd">
+            </div>
+        </form>
         <div class="button">
             <button type="submit">Create Account</button>
         </div>
@@ -29,5 +32,6 @@
             <p>Already have an account?<span><a href="#">Login</a></span></p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
