@@ -24,24 +24,78 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
-    width: 400px;
+    width: 500px;
     height: 150px;
 }
 body h1{
     font-size: 50px;
 }
 
-.container .days, .hours, .minutes,.seconds{
-    font-size: 50px;
+.container .days,.container .hours,.container .minutes,.container .seconds{
+    font-size: 30px;
     background:transparent;
     /* border: 1px solid white; */
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     box-shadow: 
     inset 0 4px 10px rgba(255,255,255,0.2),
     0 8px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.container .days:hover,.container .hours:hover,.container .minutes:hover,.container .seconds:hover{
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.container div .label{
+    font-size: 20px;
+}
+
+@media(max-width:600px){
+    .container{
+        border: 1px solid lightgray;
+        box-shadow:0 0 5px 5px rgb(65, 138, 223);
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 15px;
+        width: 300px;
+        height: auto;
+        flex-wrap: wrap;
+    }
+    
+
+    body h1{
+        font-size: 30px;
+    }
+
+    .container .days, .container .hours,.container .minutes,.container .seconds{
+        font-size: 20px;
+        background:transparent;
+        /* border: 1px solid white; */
+        padding: 8px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 
+        inset 0 4px 10px rgba(255,255,255,0.2),
+        0 8px 20px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease-in-out;
+    }
 }
