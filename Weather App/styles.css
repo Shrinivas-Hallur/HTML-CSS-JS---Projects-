@@ -76,8 +76,18 @@ body{
     font-size: 30px;
 }
 
-.details{
+.error-msg{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(130, 17, 17);
+}
+
+.details{
+    display: none;
     justify-content: center;
     align-items: center;
     gap:70px;
@@ -165,4 +175,15 @@ body{
     }
 }
 
+.weather{
+    display: none;
+}
+
+.details{
+    display: none;
+}
+
+.error-msg{
+    display: none;
+}
 
