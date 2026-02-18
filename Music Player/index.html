@@ -24,12 +24,17 @@
             </div>
         </div>
         <div class="audio">
-            <audio controls>
+            <audio controls id="song">
                 <source src="media/Shararat Dhurandhar 128 Kbps.mp3" type="audio/mpeg">
             </audio>
         </div>
         <div class="audio-player">
-            <input type="range" class="form-range" value="0" id="range2">
+            <input type="range" value="0" id="range2">
+        </div>
+        <div class="controls">
+            <i class="bi bi-skip-backward-fill" id="fast-backward"></i>
+            <i class="bi bi-play-fill" id="pause-play"> </i>
+            <i class="bi bi-skip-forward-fill" id="fast-forward"></i>
         </div>
     </div>
     <script src="script.js"></script>
