@@ -179,3 +179,11 @@ body{
     display: none;
 } */
 
+.playlist li i {
+    font-size: 18px;
+    color: rgb(215, 96, 182);
+}
+
+.playlist li i:hover {
+    transform: scale(1.2);
+}

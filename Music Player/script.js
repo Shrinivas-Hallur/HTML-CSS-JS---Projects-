@@ -14,6 +14,20 @@ let songs=[
     },
 
     {
+        name:"Bhuvanam Gaganam",
+        Artist: "Puneeth Rajkumar",
+        file:"media/2917.mp3",
+        img:"media/vamshi.jpg"
+    },
+
+    {
+        name:"Dasanagu Visheshanagu",
+        Artist: "Kanaka Dasaru",
+        file:"media/Anantha_Kulkarni_-_Dasanagu_Visheshanagu_(mp3.pm).mp3",
+        img:"media/dasanagu.jpg"
+    },
+
+    {
         name:"Shararat",
         Artist: "Ranveer Singh, Ayesh khan",
         file:"media/Shararat Dhurandhar 128 Kbps.mp3",
@@ -32,6 +46,13 @@ let forward=document.querySelector('#fast-forward')
 let songTitle = document.querySelector(".songname h1");
 let songArtist = document.querySelector(".songname h4");
 let thumbnail = document.querySelector("#img-thumb");
+let likeBtn=document.querySelector("#like");
+let favMenuBtn=document.querySelector("#left");
+let menuBtn=document.querySelector("#menu")
+let playlist=document.querySelector("#playlist")
+let songlist=document.querySelector("#song-list")
+let favPlaylist=document.querySelector("#fav-playlist")
+let favSonglist=document.querySelector("#fav-song-list")
 
 let currentSongIndex=0;
 
@@ -88,25 +109,40 @@ rangeBar.onchange=function(){
 //     }
 // })
 
-let favourites=[]
+let favourites=JSON.parse(localStorage.getItem("favourites")) || [];
 
-let likeBtn=document.querySelector("#like");
-let favMenuBtn=document.querySelector("#left");
 
 function loadSong(index){
-    music.src=songs[index].file;
+    // music.src=songs[index].file;
+
+    if (music.src !== songs[index].file) {
+        music.src = songs[index].file;
+    }
+
     songTitle.textContent=songs[index].name;
     songArtist.textContent=songs[index].Artist;
     thumbnail.src=songs[index].img;
 
-    let isFav=favourites.find(
-        fav=>fav.file === songs[index].file
-    );
+    updateLikeIcon();
+    // let isFav=favourites.find(
+    //     fav=>fav.file === songs[index].file
+    // );
 
-    likeBtn.style.color=isFav?"red":"rgb(201,81,99)";
+    // likeBtn.style.color=isFav?"red":"rgb(201,81,99)";
 }
 
+
 loadSong(currentSongIndex);
+
+function updateLikeIcon() {
+
+    let isFav = favourites.find(
+        fav => fav.file === songs[currentSongIndex].file
+    );
+
+    likeBtn.style.color = isFav ? "red" : "rgb(201,81,99)";
+}
+
 
 forward.addEventListener("click", function () {
     currentSongIndex++;
@@ -138,9 +174,6 @@ music.addEventListener("ended", function () {
     forward.click();
 });
 
-let menuBtn=document.querySelector("#menu")
-let playlist=document.querySelector("#playlist")
-let songlist=document.querySelector("#song-list")
 
 menuBtn.addEventListener('click',()=>{
     favPlaylist.classList.remove("active");
@@ -152,9 +185,14 @@ function displaySongs(){
     songlist.innerHTML="";
 
     songs.forEach((song,index)=>{
+
         let li=document.createElement("li");
-        li.textContent=song.name;
-        li.addEventListener("click",function(){
+
+        let span= document.createElement("span");
+        span.textContent=song.name;
+        span.style.cursor="pointer";
+
+        span.addEventListener("click", function(){
             currentSongIndex=index;
             loadSong(currentSongIndex);
             music.play();
@@ -163,11 +201,40 @@ function displaySongs(){
             ppBtn.classList.add("bi-pause-fill");
             playlist.classList.remove("active");
         })
+
+        let downloadBtn=document.createElement("i");
+        downloadBtn.className="bi bi-download";
+        downloadBtn.style.float="right";
+        downloadBtn.style.cursor="pointer";
+
+        downloadBtn.addEventListener("click", function (e) {
+            e.stopPropagation(); // prevents song playing
+
+            downloadSong(song);
+        });
+
+        li.appendChild(span);
+        li.appendChild(downloadBtn);
+
+        // li.textContent=song.name;
+        // li.addEventListener("click",function(){
+            
+        // })
         songlist.appendChild(li);
     })
 }
 
 displaySongs();
+
+function downloadSong(song){
+    let a=document.createElement("a");
+    a.href=song.file;
+    a.download=song.name;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
 likeBtn.addEventListener("click",()=>{
 
@@ -182,12 +249,12 @@ likeBtn.addEventListener("click",()=>{
         favourites.push(song);
         // likeBtn.style.color="red";
     }
-    loadSong(currentSongIndex);
+    localStorage.setItem("favourites",JSON.stringify(favourites));
+    // loadSong(currentSongIndex);
+
+    updateLikeIcon();
 })
 
-
-let favPlaylist=document.querySelector("#fav-playlist")
-let favSonglist=document.querySelector("#fav-song-list")
 
 function displayFavourites(){
     favSonglist.innerHTML=""
@@ -215,7 +282,6 @@ function displayFavourites(){
         favSonglist.appendChild(li);
     })
 }
-
 
 favMenuBtn.addEventListener("click", ()=>{
 
