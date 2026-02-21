@@ -88,11 +88,22 @@ rangeBar.onchange=function(){
 //     }
 // })
 
+let favourites=[]
+
+let likeBtn=document.querySelector("#like");
+let favMenuBtn=document.querySelector("#left");
+
 function loadSong(index){
     music.src=songs[index].file;
     songTitle.textContent=songs[index].name;
     songArtist.textContent=songs[index].Artist;
     thumbnail.src=songs[index].img;
+
+    let isFav=favourites.find(
+        fav=>fav.file === songs[index].file
+    );
+
+    likeBtn.style.color=isFav?"red":"rgb(201,81,99)";
 }
 
 loadSong(currentSongIndex);
@@ -132,6 +143,7 @@ let playlist=document.querySelector("#playlist")
 let songlist=document.querySelector("#song-list")
 
 menuBtn.addEventListener('click',()=>{
+    favPlaylist.classList.remove("active");
     playlist.classList.toggle("active")
 })
 
@@ -157,11 +169,6 @@ function displaySongs(){
 
 displaySongs();
 
-let favourites=[]
-
-let likeBtn=document.querySelector("#like");
-let favMenuBtn=document.querySelector("#left");
-
 likeBtn.addEventListener("click",()=>{
 
     let song=songs[currentSongIndex]
@@ -170,16 +177,17 @@ likeBtn.addEventListener("click",()=>{
 
     if(exists){
         favourites=favourites.filter(fav=>fav.file!==song.file);
-        likeBtn.computedStyleMap.color="rgb(201,81,99)"
+        // likeBtn.style.color="rgb(201,81,99)"
     }else{
         favourites.push(song);
-        likeBtn.style.color="red";
+        // likeBtn.style.color="red";
     }
+    loadSong(currentSongIndex);
 })
 
 
-let favPlaylist=document.querySelector("#fav-Playlist")
-let favSonglist=document.querySelector("fav-song-list")
+let favPlaylist=document.querySelector("#fav-playlist")
+let favSonglist=document.querySelector("#fav-song-list")
 
 function displayFavourites(){
     favSonglist.innerHTML=""
@@ -204,17 +212,17 @@ function displayFavourites(){
 
         favPlaylist.classList.remove("active");
         })
-        favSongList.appendChild(li);
+        favSonglist.appendChild(li);
     })
 }
 
+
 favMenuBtn.addEventListener("click", ()=>{
 
+    playlist.classList.remove("active"); // close song list
     favPlaylist.classList.toggle("active");
 
     if(favPlaylist.classList.contains("active")){
         displayFavourites();
     }
-
 });
-
