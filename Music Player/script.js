@@ -56,6 +56,7 @@ let favSonglist=document.querySelector("#fav-song-list")
 let currentTimeEl = document.querySelector("#current-time");
 let totalTimeEl = document.querySelector("#total-time");
 let shuffleBtn = document.querySelector("#shuffle");
+let searchInput = document.querySelector("#search-song");
 // let thumbnail = document.querySelector("#img-thumb");
 
 let isShuffle = false;
@@ -267,49 +268,70 @@ menuBtn.addEventListener('click',()=>{
 })
 
 
-function displaySongs(){
-    songlist.innerHTML="";
+function displaySongs(filteredSongs = songs){
 
-    songs.forEach((song,index)=>{
+    songlist.innerHTML = "";
+
+    // ⭐ If nothing found
+    if(filteredSongs.length === 0){
+        let li = document.createElement("li");
+        li.textContent = "Song not available";
+        li.style.textAlign = "center";
+        li.style.background = "#fff0f5";
+        songlist.appendChild(li);
+        return;
+    }
+
+    filteredSongs.forEach((song)=>{
+
+        let index = songs.findIndex(s => s.file === song.file);
 
         let li=document.createElement("li");
 
-        let span= document.createElement("span");
+        let span=document.createElement("span");
         span.textContent=song.name;
-        span.style.cursor="pointer";
 
         span.addEventListener("click", function(){
+
             currentSongIndex=index;
             loadSong(currentSongIndex);
             music.play();
 
-            ppBtn.classList.remove("bi-play-fill");
-            ppBtn.classList.add("bi-pause-fill");
+            thumbnail.classList.remove("paused");
+            thumbnail.classList.add("playing");
+
+            ppBtn.classList.replace("bi-play-fill","bi-pause-fill");
+
             playlist.classList.remove("active");
-        })
+        });
 
         let downloadBtn=document.createElement("i");
         downloadBtn.className="bi bi-download";
         downloadBtn.style.float="right";
-        downloadBtn.style.cursor="pointer";
 
-        downloadBtn.addEventListener("click", function (e) {
-            e.stopPropagation(); // prevents song playing
-
+        downloadBtn.addEventListener("click",(e)=>{
+            e.stopPropagation();
             downloadSong(song);
         });
 
         li.appendChild(span);
         li.appendChild(downloadBtn);
 
-        // li.textContent=song.name;
-        // li.addEventListener("click",function(){
-            
-        // })
         songlist.appendChild(li);
-    })
+    });
 }
 
+searchInput.addEventListener("input", function(){
+
+    let searchValue = searchInput.value.toLowerCase();
+
+    let filtered = songs.filter(song =>
+        song.name.toLowerCase().includes(searchValue) ||
+        song.Artist.toLowerCase().includes(searchValue)
+    );
+
+    displaySongs(filtered);
+});
 displaySongs();
 
 function downloadSong(song){

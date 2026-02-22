@@ -241,3 +241,8 @@ body{
 .thumbnail img.playing{
     animation: musicGlow 2s ease-in-out infinite;
 }
+
+#search-song{
+    border-radius: 8px;
+    font-size: 14px;
+}
