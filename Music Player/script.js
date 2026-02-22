@@ -86,6 +86,7 @@ ppBtn.addEventListener('click',()=>{
 
 music.addEventListener("timeupdate", function () {
     rangeBar.value = music.currentTime;
+    saveLastSong();
 });
 
 rangeBar.onchange=function(){
@@ -110,20 +111,25 @@ rangeBar.onchange=function(){
 // })
 
 let favourites=JSON.parse(localStorage.getItem("favourites")) || [];
+let lastSongData=JSON.parse(localStorage.getItem("lastSong")) || {};
+let isrestoring=true;
 
-
-function loadSong(index){
+function loadSong(index, resetTime=true){
     // music.src=songs[index].file;
 
-    if (music.src !== songs[index].file) {
-        music.src = songs[index].file;
+    music.src = songs[index].file;
+
+    // reset only for manual change
+    if(resetTime){
+        music.currentTime = 0;
     }
 
-    songTitle.textContent=songs[index].name;
-    songArtist.textContent=songs[index].Artist;
-    thumbnail.src=songs[index].img;
+    songTitle.textContent = songs[index].name;
+    songArtist.textContent = songs[index].Artist;
+    thumbnail.src = songs[index].img;
 
     updateLikeIcon();
+
     // let isFav=favourites.find(
     //     fav=>fav.file === songs[index].file
     // );
@@ -131,8 +137,30 @@ function loadSong(index){
     // likeBtn.style.color=isFav?"red":"rgb(201,81,99)";
 }
 
+function restoreLastSong(){
+    let saved=JSON.parse(localStorage.getItem("lastSong"))
 
-loadSong(currentSongIndex);
+    if(saved){
+        currentSongIndex=saved.index || 0;
+        loadSong(currentSongIndex, false);
+        music.addEventListener("loadedmetadata", () => {
+            music.currentTime=saved.currentTime || 0;
+            if(saved.isPlaying){
+                music.play();
+                ppBtn.classList.remove("bi-play-fill");
+                ppBtn.classList.add("bi-pause-fill");
+            }
+        }, { once:true });
+
+    } else {
+        loadSong(currentSongIndex);
+    }
+}
+
+// loadSong(currentSongIndex);
+restoreLastSong();
+
+
 
 function updateLikeIcon() {
 
@@ -141,6 +169,16 @@ function updateLikeIcon() {
     );
 
     likeBtn.style.color = isFav ? "red" : "rgb(201,81,99)";
+}
+
+function saveLastSong(){
+    let data={
+        index: currentSongIndex,
+        currentTime: music.currentTime,
+        isPlaying: !music.paused
+    };
+
+    localStorage.setItem("lastSong",JSON.stringify(data));
 }
 
 
