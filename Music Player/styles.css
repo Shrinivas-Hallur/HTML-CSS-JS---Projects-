@@ -75,7 +75,7 @@ body{
     width: 175px;
     height: 175px;
     border-radius: 50%;
-    box-shadow: 0 0 5px 5px lightgoldenrodyellow;
+    /* box-shadow: 0 0 5px 5px lightgoldenrodyellow; */
     margin-bottom: 10px;
 }
 
@@ -210,21 +210,34 @@ body{
     color:white;
 }
 
-@keyFrames rotateAlbum{
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
+/* glowing animation */
+@keyframes musicGlow {
+
+    0% {
+        box-shadow: 0 0 5px 5px rgba(255,105,180,0.3);
+        transform: scale(1);
     }
 
+    50% {
+        box-shadow: 0 0 25px 25px rgba(255,105,180,0.8);
+        transform: scale(1.05);
+    }
+
+    100% {
+        box-shadow: 0 0 5px 5px rgba(255,105,180,0.3);
+        transform: scale(1);
+    }
 }
 
-    .thumbnail img{
-        animation: rotateAlbum 8s linear infinite;
-        animation-play-state:paused;
-    }
+/* default thumbnail */
+.thumbnail img{
+    transition: 0.3s ease;
+}
 
-    .thumbnail img.playing {
-    animation-play-state: running;
+.thumbnail img.paused{
+    box-shadow: 0 0 5px 5px lightgoldenrodyellow;
+}
+/* animation when playing */
+.thumbnail img.playing{
+    animation: musicGlow 2s ease-in-out infinite;
 }

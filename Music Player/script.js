@@ -101,6 +101,7 @@ function playPause(){
         music.play();
         ppBtn.classList.remove("bi-play-fill")
         ppBtn.classList.add("bi-pause-fill")
+        thumbnail.classList.remove("paused")
         thumbnail.classList.add("playing");
     }
     else{
@@ -108,6 +109,7 @@ function playPause(){
         ppBtn.classList.remove("bi-pause-fill")
         ppBtn.classList.add("bi-play-fill")
         thumbnail.classList.remove("playing");
+        thumbnail.classList.add("paused")
     }
 }
 
@@ -232,6 +234,7 @@ forward.addEventListener("click", function () {
 
     loadSong(currentSongIndex);
     music.play();
+    thumbnail.classList.remove("paused")
     thumbnail.classList.add("playing");
     ppBtn.classList.remove("bi-play-fill");
     ppBtn.classList.add("bi-pause-fill");
@@ -246,13 +249,15 @@ backward.addEventListener("click", function () {
 
     loadSong(currentSongIndex);
     music.play();
+    thumbnail.classList.remove("paused");
+    thumbnail.classList.add("playing");
     ppBtn.classList.remove("bi-play-fill");
     ppBtn.classList.add("bi-pause-fill");
 });
 
 music.addEventListener("ended", function () {
     forward.click();
-    thumbnail.classList.remove("playing");
+    // thumbnail.classList.remove("playing");
 });
 
 
