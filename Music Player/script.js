@@ -53,12 +53,47 @@ let playlist=document.querySelector("#playlist")
 let songlist=document.querySelector("#song-list")
 let favPlaylist=document.querySelector("#fav-playlist")
 let favSonglist=document.querySelector("#fav-song-list")
+let currentTimeEl = document.querySelector("#current-time");
+let totalTimeEl = document.querySelector("#total-time");
+let shuffleBtn = document.querySelector("#shuffle");
+// let thumbnail = document.querySelector("#img-thumb");
 
+let isShuffle = false;
+shuffleBtn.addEventListener("click", () => {
+
+    isShuffle = !isShuffle;
+
+    shuffleBtn.classList.toggle("active");
+
+});
+
+function getRandomSongIndex(){
+
+    let randomIndex;
+
+    do{
+        randomIndex = Math.floor(Math.random() * songs.length);
+    }
+    while(randomIndex === currentSongIndex); // avoid same song
+
+    return randomIndex;
+}
 let currentSongIndex=0;
 
 music.onloadedmetadata=function(){
     rangeBar.max=music.duration;
     rangeBar.value=music.currentTime;
+    totalTimeEl.textContent=formatTime(music.duration);
+}
+
+function formatTime(time){
+
+    if (isNaN(time)) return "00:00";
+
+    const mins = Math.floor(time / 60).toString().padStart(2,"0");
+    const secs = Math.floor(time % 60).toString().padStart(2,"0");
+
+    return `${mins}:${secs}`;
 }
 
 function playPause(){
@@ -66,11 +101,13 @@ function playPause(){
         music.play();
         ppBtn.classList.remove("bi-play-fill")
         ppBtn.classList.add("bi-pause-fill")
+        thumbnail.classList.add("playing");
     }
     else{
         music.pause();
         ppBtn.classList.remove("bi-pause-fill")
         ppBtn.classList.add("bi-play-fill")
+        thumbnail.classList.remove("playing");
     }
 }
 
@@ -86,6 +123,7 @@ ppBtn.addEventListener('click',()=>{
 
 music.addEventListener("timeupdate", function () {
     rangeBar.value = music.currentTime;
+    currentTimeEl.textContent=formatTime(music.currentTime);
     saveLastSong();
 });
 
@@ -183,14 +221,18 @@ function saveLastSong(){
 
 
 forward.addEventListener("click", function () {
-    currentSongIndex++;
-
-    if (currentSongIndex >= songs.length) {
-        currentSongIndex = 0; // loop to first
+    if(isShuffle){
+        currentSongIndex = getRandomSongIndex();
+    } else {
+        currentSongIndex++;
+        if(currentSongIndex >= songs.length){
+            currentSongIndex = 0;
+        }
     }
 
     loadSong(currentSongIndex);
     music.play();
+    thumbnail.classList.add("playing");
     ppBtn.classList.remove("bi-play-fill");
     ppBtn.classList.add("bi-pause-fill");
 });
@@ -210,6 +252,7 @@ backward.addEventListener("click", function () {
 
 music.addEventListener("ended", function () {
     forward.click();
+    thumbnail.classList.remove("playing");
 });
 
 

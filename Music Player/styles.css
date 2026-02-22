@@ -187,3 +187,44 @@ body{
 .playlist li i:hover {
     transform: scale(1.2);
 }
+
+.time{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-weight: 600;
+    color: rgb(215,96,182);
+}
+
+#shuffle{
+    color: rgb(215,96,182);
+    background: white;
+    padding:10px;
+    border-radius:50%;
+    font-size:15px;
+    cursor:pointer;
+}
+
+#shuffle.active{
+    background: rgb(215,96,182);
+    color:white;
+}
+
+@keyFrames rotateAlbum{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+
+}
+
+    .thumbnail img{
+        animation: rotateAlbum 8s linear infinite;
+        animation-play-state:paused;
+    }
+
+    .thumbnail img.playing {
+    animation-play-state: running;
+}
