@@ -17,22 +17,38 @@ body{
     background: linear-gradient(to bottom right, rgb(171, 189, 215), rgb(186, 151, 240));
     padding: 20px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.container .search-form{
+.search-form{
     margin-bottom: 20px;
     background-color: aquamarine;
     padding: 15px;
     border-radius: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    align-items: center;
 }
 
-.container .search-form input,.container .search-form button{
+.search-form input{
+    width: 250px;   /* fixed width (key fix) */
     padding: 10px;
     border-radius: 20px;
-    outline: none;
     border: none;
-    font-size: 20px;
-    /* background-color: transparent; */
+    outline: none;
+}
+
+.search-form button{
+    width: 120px;   /* fixed width */
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
 }
 
 .container .search-form button:hover{
