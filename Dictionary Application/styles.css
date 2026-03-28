@@ -27,7 +27,7 @@ body{
     background-color: aquamarine;
     padding: 15px;
     border-radius: 10px;
-    width: 50%;
+    width: 350px;
     display: flex;
     justify-content: center;
     gap: 10px;
