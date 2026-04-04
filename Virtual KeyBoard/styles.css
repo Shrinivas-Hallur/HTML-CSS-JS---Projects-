@@ -33,6 +33,8 @@ body{
     padding: 20px;
     font-size: 40px;
     color: red;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
 }
 
 .keyboard{
@@ -82,4 +84,9 @@ body{
 .keyboard .row .key:active{
     background: white;
     color: black;
+}
+
+.capslock.active{
+    background-color: whitesmoke !important;
+    color: black !important;
 }
