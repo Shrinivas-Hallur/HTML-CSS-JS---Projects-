@@ -1,19 +1,25 @@
-body{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+
+body{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .container{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items:Center;
+    align-items:center;
     gap:50px;
     flex-direction: column;
     background: linear-gradient(to bottom right, rgb(58, 58, 255), rgb(171, 171, 255));
@@ -34,4 +40,46 @@ body{
     width:70%;
     height: 400px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.keyboard .row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.keyboard .row .key{
+    background: black;
+    color: whitesmoke;
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.capslock, .enter{
+    width: 150px !important;
+    height: 50px;
+}
+.space{
+    height: 50px;
+    width: 400px !important;
+}
+
+.keyboard .row .key:active{
+    background: white;
+    color: black;
 }
