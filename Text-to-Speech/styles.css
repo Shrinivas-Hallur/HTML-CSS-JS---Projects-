@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Courier New';
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: whitesmoke; */
+    background: linear-gradient(45deg,#010758,#490d61);
+}
+
+.container{
+    background-color: whitesmoke;
+    height: auto;
+    width:auto;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .head{
+    color: rgb(54, 154, 121);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.container .head span{
+    color: #dc9650;
+}
+
+.container textarea{
+    margin: 10px;
+    padding: 10px;
+    border-radius:10px;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: gray;
+    width: 500px;
+    height: 200px;
+}
+
+.container .row{
+    display: flex ;
+    align-items:center ;
+    justify-content: space-evenly ;
+    gap: 5px;
+    position: relative;
+}
+
+.container .row button{
+    background: rgb(233, 71, 98);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius:50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.container .row span{
+    font-size: 20px;
+}
+/*
+.container .row select{
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    border-radius: 50px;
+    width: 380px;
+    flex: 1;
+    appearance: none;
+    cursor: pointer;
+}
+
+.container .row .drop{
+    position: absolute ;
+    right:140px;
+    top:55%;
+    font-weight: 700;
+    transform: translateY(-50%);
+    cursor: pointer;
+} */
+
+.select-box {
+    position: relative;
+    width: 380px;
+    flex: 1;
+}
+
+.select-box select {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* extra space for arrow */
+    border-radius: 50px;
+    background-color: rgb(240, 240, 240);
+    appearance: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 16px;
+}
+
+/* Arrow */
+.select-box .drop {
+    position: absolute;
+    right: 15px;   /* correct alignment */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: gray;
+    font-size: 18px;
+}
