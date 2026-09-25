@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="converter-container">
+          <h1>Currency Converter</h1>
+          <div class="inp-container">
+            <input type="number" placeholder="Enter number" min="1" class="inp-amount"/>
+            <select name="" id="" class="fromCurrency">
+              <!-- <option value="INR">INR</option>
+              <option value="USD">USD</option> -->
+            </select>
+          </div>
+          <div class="arrow"><i class="fa-solid fa-arrow-down-long"></i></div>
+          <div class="inp-container">
+            <input type="number" class="convert-amount" disabled/>
+            <select name="" id1="" class="toCurrency">
+              <!-- <option value="INR">INR</option>
+              <option value="USD">USD</option> -->
+            </select>
+          </div>
+          <div class="result">
+            1 USD = 82 INR
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
