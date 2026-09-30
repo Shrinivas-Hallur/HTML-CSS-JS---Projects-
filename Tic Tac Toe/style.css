@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Page background and text alignment */
+
+body {
+    background: #5ad2b0;
+    text-align: center;
+}
+
+body.dark-mode {
+    background-color: #35524A;
+}
+
+
+/* Theme and music buttons */
+
+.settings {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 1000;
+}
+
+.settings button {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: black;
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* Main game container */
+
+.container {
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.container h1 {
+    color: white;
+    font-size: 40px;
+}
+
+
+/* Used to hide elements */
+
+.hide {
+    display: none;
+}
+
+
+/* Winner or draw message */
+
+.msg-container #msg {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(231, 96, 24);
+}
+
+
+/* Tic Tac Toe board */
+
+.game {
+    height: 80vmin;
+    width: 80vmin;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* Individual game boxes */
+
+.box {
+    height: 18vmin;
+    width: 18vmin;
+
+    border-radius: 1rem;
+    border: none;
+
+    box-shadow: 0 0 1rem rgba(214, 7, 7, 0.5);
+
+    font-size: 8vmin;
+
+    /* color: rgb(214, 7, 7); */
+
+    background-color: blanchedalmond;
+}
+
+
+/* Color for O */
+
+.boxOcolor {
+    color: blue;
+}
+
+
+/* Color for X */
+
+.boxXcolor {
+    color: red;
+}
+
+
+/* Reset button */
+
+#reset-btn {
+    padding: 1rem;
+
+    font-size: 1.25rem;
+
+    background-color: black;
+    color: white;
+
+    border-radius: 1rem;
+    border: none;
+}
+
+
+/* Adjust the layout for smaller screens */
+
+
+/* For screens 510px and below */
+
+@media (max-width: 510px) {
+
+    .msg-container #msg {
+        font-size: 30px;
+    }
+}
+
+
+/* For screens 400px and below */
+
+@media (max-width: 400px) {
+
+    .msg-container #msg {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .container h1 {
+        font-size: 30px;
+    }
+}
+
+
+/* For very small screens */
+
+@media (max-width: 200px) {
+
+    .msg-container #msg {
+        font-size: 12px;
+    }
+
+    .box {
+        height: 14vmin;
+        width: 14vmin;
+
+        font-size: 5vmin;
+    }
+
+    #reset-btn {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+
+/* For extremely small screens */
+
+@media (max-width: 150px) {
+
+    .msg-container #msg {
+        font-size: 10px;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    #reset-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
